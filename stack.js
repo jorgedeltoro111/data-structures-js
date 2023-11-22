@@ -47,9 +47,13 @@ class Stack{
             return true;
         }
     }
+
+    peek(){
+        console.log(this.top.value);
+    }
 }
 let stack = new Stack(5);
 stack.push(10);
 stack.push(15);
 stack.push(20);
-stack.getStack();
+stack.peek();
