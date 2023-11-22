@@ -60,4 +60,5 @@ let list = new List(5);
 list.append(10);
 list.append(15);
 list.append(25);
+list.insert(100, 15);
 list.getList();
