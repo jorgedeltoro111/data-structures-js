@@ -23,8 +23,8 @@ class Stack{
 
     getStack(){
         if(this.isEmpty()){
-            let newNode = new Node(0);
-            newNode = this.top;
+            let newNode = this.top;
+        
             while(newNode !== null){
                 console.log(newNode.value);
                 newNode = newNode.next;
