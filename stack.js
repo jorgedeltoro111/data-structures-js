@@ -33,7 +33,7 @@ class Stack{
     }
 
     pop(){
-        if(this.isEmpty()){
+        if(!this.isEmpty()){
             this.top = this.top.next;
             this.length--;
         }
@@ -42,9 +42,9 @@ class Stack{
     isEmpty(){
         if(this.length === 0){
             console.log('The stack is empty!');
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
     }
 
