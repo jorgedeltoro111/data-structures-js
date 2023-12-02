@@ -56,7 +56,15 @@ class BinarySearchTree {
         if(this.length > 0){
             while(aux !== null){
                 if(aux.value === value){
-                    console.log('The value exist!');
+                    if(aux.left !== null){
+                        console.log(`The node is ${aux.value} and has a children in the left part: ${aux.left.value}`);
+                    }
+                    if(aux.right !== null){
+                        console.log(`The node is ${aux.value} and has a children in the right part: ${aux.right.value}`);
+                    }
+                    if(aux.left === null && aux.right === null){
+                        console.log(`The node is ${aux.value} and doesnt have children.`);
+                    }
                     return;
                 }else if(value > aux.value){
                     aux = aux.right;
@@ -70,13 +78,58 @@ class BinarySearchTree {
         }
     }
 
-    
+    delete(value){
+        let aux = this.root;
+        let last;
+        if(this.length > 0){
+            while(aux !== null){
+                if(aux.value === value){
+                    if(aux.right === null && aux.left === null){//dont have children
+                        if(aux.value > last.value){
+                            last.right = null;
+                        }else{
+                            last.left = null;
+                        }
+                        return;
+                    }else if(aux.right !== null && aux.left === null){//only one children right
+                        let next = aux.right;
+                        if(aux.value > last.value){
+                            last.right = next;
+                        }else{
+                            last.left = next;
+                        }
+                        return;
+                    }else if(aux.left !== null && aux.right === null){//only one children left
+                        let next = aux.left;
+                        if(aux.value > last.value){
+                            last.right = next;
+                        }else{
+                            last.left = next;
+                        }
+                        return;
+                    }else{//There are 2 children
+                        
+                        return;
+                    }
+                }else if(value > aux.value){
+                    last = aux;
+                    aux = aux.right;
+                }else{
+                    last = aux;
+                    aux = aux.left;
+                }
+            }
+            console.log('The value does not exist!');
+        }else{
+            console.log('The binary tree is empty!');
+        }
+    }
 }
 
 let tree = new BinarySearchTree();
 tree.insert(10);
+tree.insert(7);
 tree.insert(12);
-tree.insert(9);
 tree.insert(11);
-tree.insert(14);
-tree.search(8);
+tree.insert(13);
+tree.search(12);
